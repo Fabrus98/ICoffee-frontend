@@ -1,0 +1,48 @@
+/* Fix per menubar mobile PrimeReact */
+.p-menubar-mobile-active .p-menubar-root-list {
+  width: 100% !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+.p-menubar .p-menuitem-link {
+  white-space: nowrap; /* evita che le label vengano troncate */
+  padding: 0.75rem 1rem !important; /* migliora spaziatura */
+}
+
+/* opzionale: per centrare meglio gli elementi nel menù mobile */
+.p-menubar-mobile-active .p-menuitem {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 100% !important;
+  padding: 0.25rem 0.5rem !important;
+  box-sizing: border-box;
+}
+
+.p-menubar-mobile-active .p-menuitem-link {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important; /* <-- il trucco */
+  background-color: white !important; /* opzionale */
+  border-radius: 6px !important; /* opzionale */
+  color: black !important;
+}
+
+/*
+// default: testo bianco 
+.custom-menubar .p-menuitem-link,
+.custom-menubar .p-menuitem-link .p-menuitem-text,
+.custom-menubar .p-menuitem-link .p-menuitem-icon {
+  color: white !important;
+}
+
+// voce attiva: colore ciano / bold
+.custom-menubar .p-menuitem-link.active-menuitem,
+.custom-menubar .p-menuitem-link.active-menuitem .p-menuitem-text,
+.custom-menubar .p-menuitem-link.active-menuitem .p-menuitem-icon {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+*/
