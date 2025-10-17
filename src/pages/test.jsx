@@ -1,5 +1,4 @@
 
-import menuFile from '../../../icoffee-backend/bookings/menu.json';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { PickList } from "primereact/picklist";
