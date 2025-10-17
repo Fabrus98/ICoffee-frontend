@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useState } from "react";
-import Header from "./components/header";
+import Header from "./components/Header";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Prenotazione from "./pages/Prenotazione";
