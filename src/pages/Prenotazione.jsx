@@ -49,7 +49,7 @@ export default function Prenotazione() {
         headers: { Authorization: `Token ${token}` },
         params: { username: selectedUser }
       });
-      setUserBookedState(userAlreadyBookedRes)
+      setUserBookedState(userAlreadyBookedRes.data)
     } catch (err) {
 
     }
@@ -138,6 +138,7 @@ export default function Prenotazione() {
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="card flex justify-content-center">
+            <p>Nuova prenotazione per l'utente:</p>
             <Dropdown
               value={selectedUser}
               onChange={(e) => setSelectedUser(e.value)}
