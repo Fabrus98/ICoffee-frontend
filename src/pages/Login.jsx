@@ -1,7 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
 
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -14,7 +12,6 @@ export default function Login({ onLogin }) {
 
     try {
 
-      console.log(backendUrl)
       const response = await axios.post(`/api/login/`, {
           username,
           password

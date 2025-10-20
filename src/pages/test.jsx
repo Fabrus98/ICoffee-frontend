@@ -19,7 +19,7 @@ export default function ProductPickList() {
     const fetchMenu = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(backendUrl + "/api/items/", {
+        const res = await axios.get("/api/items/", {
           headers: { Authorization: `Token ${token}` },
         });
         setMenu(res.data);

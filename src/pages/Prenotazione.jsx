@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "primereact/button";
 import { PickList } from 'primereact/picklist';
-        
-
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Prenotazione() {
   const [menu, setMenu] = useState({});
@@ -17,10 +14,10 @@ export default function Prenotazione() {
     const preliminaryFetch = async () => {
       try {
         const token = localStorage.getItem("token");
-        const sessionRes = await axios.get(backendUrl + "/api/session/", {
+        const sessionRes = await axios.get("/api/session/", {
           headers: { Authorization: `Token ${token}` },
         });
-        const productsRes = await axios.get(backendUrl + "/api/items/", {
+        const productsRes = await axios.get("/api/items/", {
           headers: { Authorization: `Token ${token}` },
         });
         setThisSession(sessionRes.data);
@@ -90,7 +87,7 @@ export default function Prenotazione() {
       console.log(bookingData)
 
       await axios.post(
-        backendUrl + "/api/bookings/",
+        "/api/bookings/",
         { items: bookingData },
         {
           headers: { Authorization: `Token ${token}` },

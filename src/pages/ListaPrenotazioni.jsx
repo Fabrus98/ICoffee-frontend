@@ -5,7 +5,6 @@ import { Column } from "primereact/column";
 import { Calendar } from 'primereact/calendar';
 import { FloatLabel } from 'primereact/floatlabel';
 import axios from "axios";
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function ListaPrenotazioni() {
 	const [selectedSession, setSelectedSession] = useState("");
@@ -21,12 +20,12 @@ export default function ListaPrenotazioni() {
 		const preliminaryFetch = async () => {
 			try {
 				const token = localStorage.getItem("token");
-				const sessionRes = await axios.get(backendUrl + "/api/session/", {
+				const sessionRes = await axios.get("/api/session/", {
 					headers: { Authorization: `Token ${token}` },
 				});
 				const currentSession = sessionRes.data;
 
-				const bookingRes = await axios.get(backendUrl + "/api/bookings/", {
+				const bookingRes = await axios.get("/api/bookings/", {
 					headers: { Authorization: `Token ${token}` },
 					params: { session_date: currentSession }
 				});
@@ -95,7 +94,7 @@ export default function ListaPrenotazioni() {
 				const requestedSessionString = `${day}-${month}-${year}`;
 				console.log(calendarDate)
 
-				const bookingRes = await axios.get(backendUrl + "/api/bookings/", {
+				const bookingRes = await axios.get("/api/bookings/", {
 					headers: { Authorization: `Token ${token}` },
 					params: { session_date: requestedSessionString }
 				});
