@@ -11,10 +11,6 @@ import "./App.css"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-  const handleLogout = () => {
-
-    setIsLoggedIn(false);
-  };
   
   return (
     <Router>

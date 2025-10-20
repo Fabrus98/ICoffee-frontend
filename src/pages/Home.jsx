@@ -2,15 +2,11 @@ import { useNavigate } from "react-router-dom";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import { Button } from "primereact/button";
 
-export default function Home({ onLogout }) {
+//export default function Home({ onLogout }) {
+export default function Home() {
   const goTo = (path) => () => navigate(path);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    onLogout();
-  };
-
   const navigate = useNavigate();
+  const is_admin = localStorage.getItem("is_admin");
 
   return (
     <>
@@ -47,24 +43,37 @@ export default function Home({ onLogout }) {
               style={{ width: "100%", justifyContent: "flex-start", padding: "1rem 1.25rem" }}
             />
           </div>
-          <div style={{ display: "flex", padding: 10 }}>
-            <Button
-              onClick={goTo("/developing")}
-              label="Pannello di Controllo"
-              icon="pi pi-cog"
-              className="p-button-raised p-button-rounded p-button-lg p-button-secondary"
-              style={{ width: "100%", justifyContent: "flex-start", padding: "1rem 1.25rem" }}
-            />
-          </div>
-          <div style={{ display: "flex", padding: 10 }}>
-            <Button
-              onClick={goTo("/test")}
-              label="test"
-              icon="pi pi-cog"
-              className="p-button-raised p-button-rounded p-button-lg p-button-help"
-              style={{ width: "100%", justifyContent: "flex-start", padding: "1rem 1.25rem" }}
-            />
-          </div>
+          
+          {is_admin ? (
+            <>
+              <div style={{ display: "flex", padding: 10 }}>
+                <Button
+                  onClick={goTo("/developing")}
+                  label="Pannello di Controllo"
+                  icon="pi pi-cog"
+                  className="p-button-raised p-button-rounded p-button-lg p-button-secondary"
+                  style={{ width: "100%", justifyContent: "flex-start", padding: "1rem 1.25rem" }}
+                />
+              </div>
+              <div style={{ display: "flex", padding: 10 }}>
+                <Button
+                  onClick={goTo("/test")}
+                  label="test"
+                  icon="pi pi-cog"
+                  className="p-button-raised p-button-rounded p-button-lg p-button-help"
+                  style={{ width: "100%", justifyContent: "flex-start", padding: "1rem 1.25rem" }}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+            </>
+          )}
+
+
+
+
+          
         </div>
       </div>
     </>

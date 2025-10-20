@@ -18,10 +18,12 @@ export default function Login({ onLogin }) {
         });
 
       const { token } = response.data;
+      const { is_admin } = response.data;
 
       // salva il token in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("username", username);
+      localStorage.setItem("is_admin", is_admin);
 
       // comunica al parent che login è ok
       onLogin();
