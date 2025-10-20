@@ -6,7 +6,7 @@ import { Button } from "primereact/button";
 export default function Home() {
   const goTo = (path) => () => navigate(path);
   const navigate = useNavigate();
-  const is_admin = localStorage.getItem("is_admin");
+  const is_admin = localStorage.getItem("is_admin") === "true";
 
   return (
     <>
@@ -44,7 +44,7 @@ export default function Home() {
             />
           </div>
           
-          {is_admin == true ? (
+          {is_admin ? (
             <>
               <div style={{ display: "flex", padding: 10 }}>
                 <Button
@@ -69,11 +69,6 @@ export default function Home() {
             <>
             </>
           )}
-
-
-
-
-          
         </div>
       </div>
     </>
