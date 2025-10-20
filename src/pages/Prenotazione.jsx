@@ -44,18 +44,24 @@ export default function Prenotazione() {
   }, []);
 
   useEffect(() => {
-    try {
-      const token = localStorage.getItem("token");
+    const checkIfUserBooked = async () => {
+      if (!selectedUser) return;
+      try {
+        const token = localStorage.getItem("token");
 
-      const userAlreadyBookedRes = axios.get("/api/already_booked/", {
-        headers: { Authorization: `Token ${token}` },
-        params: { username: selectedUser }
-      });
-      setUserBookedState(userAlreadyBookedRes.data)
-      console.log(userAlreadyBookedRes.data)
-    } catch (err) {
-
+        const userAlreadyBookedRes = axios.get("/api/already_booked/", {
+          headers: { Authorization: `Token ${token}` },
+          params: { username: selectedUser }
+        });
+        setUserBookedState(userAlreadyBookedRes.data)
+        console.log(userAlreadyBookedRes.data)
+      } catch (err) {
+        setMessage("❌ Errore interno");
+      }
     }
+  
+    checkIfUserBooked();
+    
   }, [selectedUser]);
 
   // aggiorna stato per un prodotto
