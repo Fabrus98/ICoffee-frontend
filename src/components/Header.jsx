@@ -6,6 +6,10 @@ import { Button } from "primereact/button";
 export default function Header({ onLogout }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("Home");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
 
   const items = [
     {
@@ -30,7 +34,7 @@ export default function Header({ onLogout }) {
     <Button
       icon="pi pi-sign-out"
       className="p-button-rounded"
-      onClick={onLogout}
+      onClick={handleLogout}
       style={{
         height: "2rem",
         width: "2rem",
