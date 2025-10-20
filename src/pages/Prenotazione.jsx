@@ -5,6 +5,7 @@ import { Button } from "primereact/button";
 import { PickList } from 'primereact/picklist';
 
 export default function Prenotazione() {
+	const [isLoading, setIsLoading] = useState(true);
   const [menu, setMenu] = useState({});
   const [thisSession, setThisSession] = useState("");
   const [products, setProducts] = useState([{ category: "", item_id: "", item_description: "", quantity: 1 }]);
@@ -115,78 +116,84 @@ export default function Prenotazione() {
     <div style={{ maxWidth: 500, margin: "2rem auto" }}>
       <h2>Nuova Prenotazione <br></ br> Sessione attuale: {thisSession}
       </h2>
-      <form onSubmit={handleSubmit}>
+      {isLoading ? (
+					<div>Caricamento in corso...</div>
+				) : (
+          <form onSubmit={handleSubmit}>
 
-        <div className="card flex justify-content-center">
-          <Dropdown value={selectedUser} onChange={(e) => setSelectedUser(e.value)} options={users}  
-              placeholder="Seleziona un utente" className="w-full md:w-14rem" filter />
-        </div>
+            <div className="card flex justify-content-center">
+              <Dropdown value={selectedUser} onChange={(e) => setSelectedUser(e.value)} options={users}  
+                  placeholder="Seleziona un utente" className="w-full md:w-14rem" filter />
+            </div>
 
-        {products.map((p, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ccc",
-              padding: "1rem",
-              marginBottom: "1rem",
-              borderRadius: "8px",
-            }}
-          >
-            {/* Select categoria */}
-            <label>Categoria:</label>
-            <select
-              value={p.category}
-              onChange={(e) => handleChange(index, "category", e.target.value)}
-              required
-            >
-              <option value="">-- Seleziona categoria --</option>
-              {Object.keys(menu).map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+            {products.map((p, index) => (
+              <div
+                key={index}
+                style={{
+                  border: "1px solid #ccc",
+                  padding: "1rem",
+                  marginBottom: "1rem",
+                  borderRadius: "8px",
+                }}
+              >
+                {/* Select categoria */}
+                <label>Categoria:</label>
+                <select
+                  value={p.category}
+                  onChange={(e) => handleChange(index, "category", e.target.value)}
+                  required
+                >
+                  <option value="">-- Seleziona categoria --</option>
+                  {Object.keys(menu).map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+
+                <br />
+
+                {/* Select prodotto */}
+                <label>Prodotto:</label>
+                <select
+                  value={p.item_id}
+                  onChange={(e) => handleChange(index, "item_id", e.target.value)}
+                  required
+                  disabled={!p.category}
+                >
+                  <option value="">-- Seleziona prodotto --</option>
+                  {p.category &&
+                    menu[p.category]?.map((prod) => (
+                      <option key={prod.id} value={prod.id}>
+                        {prod.name}
+                      </option>
+                    ))}
+                </select>
+
+                <br />
+
+                {/* Quantità */}
+                <label>Quantità:</label>
+                <input
+                  type="number"
+                  min="1"
+                  value={p.quantity}
+                  onChange={(e) => handleChange(index, "quantity", e.target.value)}
+                  required
+                />
+              </div>
+            ))}
+
+            <button type="button" onClick={addProduct}>
+              ➕ Aggiungi prodotto
+            </button>
 
             <br />
+            <button type="submit">📌 Conferma prenotazione</button>
+          </form>
+        )
+      }
 
-            {/* Select prodotto */}
-            <label>Prodotto:</label>
-            <select
-              value={p.item_id}
-              onChange={(e) => handleChange(index, "item_id", e.target.value)}
-              required
-              disabled={!p.category}
-            >
-              <option value="">-- Seleziona prodotto --</option>
-              {p.category &&
-                menu[p.category]?.map((prod) => (
-                  <option key={prod.id} value={prod.id}>
-                    {prod.name}
-                  </option>
-                ))}
-            </select>
-
-            <br />
-
-            {/* Quantità */}
-            <label>Quantità:</label>
-            <input
-              type="number"
-              min="1"
-              value={p.quantity}
-              onChange={(e) => handleChange(index, "quantity", e.target.value)}
-              required
-            />
-          </div>
-        ))}
-
-        <button type="button" onClick={addProduct}>
-          ➕ Aggiungi prodotto
-        </button>
-
-        <br />
-        <button type="submit">📌 Conferma prenotazione</button>
-      </form>
 
       {message && <p>{message}</p>}
     </div>
