@@ -45,6 +45,8 @@ export default function Prenotazione() {
 
   useEffect(() => {
     try {
+      const token = localStorage.getItem("token");
+
       const userAlreadyBookedRes = axios.get("/api/already_booked/", {
         headers: { Authorization: `Token ${token}` },
         params: { username: selectedUser }
