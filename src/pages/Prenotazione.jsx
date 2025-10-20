@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Dropdown } from 'primereact/dropdown';
 import { Button } from "primereact/button";
 import { PickList } from 'primereact/picklist';
 
@@ -8,6 +9,8 @@ export default function Prenotazione() {
   const [thisSession, setThisSession] = useState("");
   const [products, setProducts] = useState([{ category: "", item_id: "", item_description: "", quantity: 1 }]);
   const [message, setMessage] = useState("");
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState("");
 
   // carica la sessione attuale e il menu dal backend
   useEffect(() => {
@@ -20,6 +23,12 @@ export default function Prenotazione() {
         const productsRes = await axios.get("/api/items/", {
           headers: { Authorization: `Token ${token}` },
         });
+        const usersRes = await axios.get("/api/users/", {
+          headers: { Authorization: `Token ${token}` },
+        });
+
+        setUsers(usersRes);
+        setSelectedUser(localStorage.getItem("username"))
         setThisSession(sessionRes.data);
         setMenu(productsRes.data);
       } catch (err) {
@@ -106,6 +115,12 @@ export default function Prenotazione() {
       <h2>Nuova Prenotazione <br></ br> Sessione attuale: {thisSession}
       </h2>
       <form onSubmit={handleSubmit}>
+
+        <div className="card flex justify-content-center">
+          <Dropdown value={selectedUser} onChange={(e) => setSelectedUser(e.value)} options={users}  
+              placeholder="Seleziona un utente" className="w-full md:w-14rem" filter />
+        </div>
+
         {products.map((p, index) => (
           <div
             key={index}
