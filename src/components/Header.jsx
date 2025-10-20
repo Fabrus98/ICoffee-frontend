@@ -6,9 +6,9 @@ import { Button } from "primereact/button";
 export default function Header({ onLogout }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("Home");
-  const handleLogout = () => {
+  const handleLogout =  () => {
     localStorage.removeItem("token");
-    setIsLoggedIn(false);
+    onLogout()
   };
 
   const items = [
