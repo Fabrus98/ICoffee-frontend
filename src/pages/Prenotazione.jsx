@@ -35,7 +35,9 @@ export default function Prenotazione() {
         setMenu(productsRes.data);
       } catch (err) {
         setMessage("❌ Errore nel caricamento preliminare");
-      }
+      } finally {
+				setIsLoading(false);
+			}
     };
     preliminaryFetch();
   }, []);
