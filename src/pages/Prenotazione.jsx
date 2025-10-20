@@ -93,6 +93,7 @@ export default function Prenotazione() {
       });
 
       const bookingData = {
+        username: selectedUser,
         session: thisSession,
         products: mergedProductData
       }
