@@ -44,7 +44,7 @@ export default function Home() {
             />
           </div>
           
-          {is_admin ? (
+          {is_admin = true ? (
             <>
               <div style={{ display: "flex", padding: 10 }}>
                 <Button
