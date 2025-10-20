@@ -28,7 +28,7 @@ export default function Prenotazione() {
           headers: { Authorization: `Token ${token}` },
         });
 
-        setUsers(usersRes);
+        setUsers(usersRes.data.users);
         setSelectedUser(localStorage.getItem("username"))
         setThisSession(sessionRes.data);
         setMenu(productsRes.data);
