@@ -7,7 +7,9 @@ export default function Header({ onLogout }) {
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("Home");
   const handleLogout =  () => {
-    localStorage.removeItem("token", "username", "is_admin");
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("is_admin");
     onLogout()
   };
 
