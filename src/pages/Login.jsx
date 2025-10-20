@@ -15,7 +15,7 @@ export default function Login({ onLogin }) {
     try {
 
       console.log(backendUrl)
-      const response = await axios.post(`${backendUrl}/api/login/`, {
+      const response = await axios.post(`/api/login/`, {
           username,
           password
         });

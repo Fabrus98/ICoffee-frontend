@@ -8,12 +8,20 @@ export default defineConfig({
       host: '87.106.39.97',
       port: 5173,
       proxy: {
+        '/api': 'http://localhost:8000',
+        '/admin': 'http://localhost:8000',
+        '/static': 'http://localhost:8000'
+      }
+    },
+  }
+)
+
+/*
+      proxy: {
         '/api': {
           target: 'http://127.0.0.1:8000',  // backend Django
           changeOrigin: true,
           secure: false,
         },
       },
-    },
-  }
-)
+*/
