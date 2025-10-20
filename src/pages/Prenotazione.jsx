@@ -50,6 +50,7 @@ export default function Prenotazione() {
         params: { username: selectedUser }
       });
       setUserBookedState(userAlreadyBookedRes.data)
+      console.log(userAlreadyBookedRes.data)
     } catch (err) {
 
     }
