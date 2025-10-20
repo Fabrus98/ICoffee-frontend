@@ -49,7 +49,7 @@ export default function Prenotazione() {
       try {
         const token = localStorage.getItem("token");
 
-        const userAlreadyBookedRes = axios.get("/api/already_booked/", {
+        const userAlreadyBookedRes = await axios.get("/api/already_booked/", {
           headers: { Authorization: `Token ${token}` },
           params: { username: selectedUser }
         });
@@ -61,7 +61,7 @@ export default function Prenotazione() {
     }
   
     checkIfUserBooked();
-    
+
   }, [selectedUser]);
 
   // aggiorna stato per un prodotto
