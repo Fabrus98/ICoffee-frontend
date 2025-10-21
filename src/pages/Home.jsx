@@ -48,7 +48,7 @@ export default function Home() {
             <>
               <div style={{ display: "flex", padding: 10 }}>
                 <Button
-                  onClick={goTo("/developing")}
+                  onClick={goTo("/pannello")}
                   label="Pannello di Controllo"
                   icon="pi pi-cog"
                   className="p-button-raised p-button-rounded p-button-lg p-button-secondary"

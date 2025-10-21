@@ -5,6 +5,10 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Prenotazione from "./pages/Prenotazione";
 import ListaPrenotazioni from "./pages/ListaPrenotazioni";
+import Pannello from "./pages/Pannello";
+import Pannello_Prenotazioni from "./pages/pannello/Prenotazioni";
+import Pannello_Cibo from "./pages/pannello/Cibo";
+import Pannello_Utenti from "./pages/pannello/Utenti";
 import Developing from "./pages/Developing";
 import Test from "./pages/test";
 import "./App.css"
@@ -101,6 +105,27 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
               <Navigate to="/login" />
             )
           }
+        />
+
+        {/* pannello di controllo */}
+        <Route
+          path="/pannello"
+          element={<AdminRoute element={<Pannello />} />}
+        />
+
+        <Route
+          path="/pannello/prenotazioni"
+          element={isLoggedIn ? <Pannello_Prenotazioni /> : <Navigate to="/pannello/prenotazioni" />}
+        />
+
+        <Route
+          path="/pannello/cibo"
+          element={isLoggedIn ? <Pannello_Cibo /> : <Navigate to="/pannello/cibo" />}
+        />
+
+        <Route
+          path="/pannello/utenti"
+          element={isLoggedIn ? <Pannello_Utenti /> : <Navigate to="/pannello/utenti" />}
         />
 
         {/* sviluppo */}
