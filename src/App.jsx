@@ -9,6 +9,22 @@ import Developing from "./pages/Developing";
 import Test from "./pages/test";
 import "./App.css"
 
+function AdminRoute({ element }) {
+  const isLoggedIn = !!localStorage.getItem("token");
+  const isAdmin = localStorage.getItem("is_admin") === "true";
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />;
+  }
+
+  if (!isAdmin) {
+    return <Navigate to="/home" />;
+  }
+
+  return element;
+}
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   
@@ -75,12 +91,12 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
           }
         />
 
-        {/* sviluppo */}
+        {/* profilo */}
         <Route
-          path="/developing"
+          path="/profilo"
           element={
             isLoggedIn ? (
-              <Developing />
+              <ListaPrenotazioni />
             ) : (
               <Navigate to="/login" />
             )
@@ -90,9 +106,15 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
         {/* sviluppo */}
         <Route
           path="/test"
+          element={<AdminRoute element={<Test />} />}
+        />
+
+        {/* sviluppo */}
+        <Route
+          path="/developing"
           element={
             isLoggedIn ? (
-              <Test />
+              <Developing />
             ) : (
               <Navigate to="/login" />
             )

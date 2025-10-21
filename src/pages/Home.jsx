@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <div style={{ maxWidth: 400, margin: "2rem auto" }}>
         <div style={{ textAlign: "center" }}>
-          <p>Buongiornissimoo!</p>
+          <p>Buongiornissimo!</p>
         </div>
 
         <div style={{ maxWidth: 300, margin: "2rem auto" }}>
