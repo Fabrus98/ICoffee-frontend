@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Prenotazione from "./pages/Prenotazione";
 import ListaPrenotazioni from "./pages/ListaPrenotazioni";
 import Pannello from "./pages/Pannello";
-import Pannello_Prenotazioni from "./pages/pannello/Prenotazioni";
+import Pannello_Prenotazioni from "./pages/pannello/ModificaPrenotazioni";
 import Pannello_Cibo from "./pages/pannello/Cibo";
 import Pannello_Utenti from "./pages/pannello/Utenti";
 import Developing from "./pages/Developing";

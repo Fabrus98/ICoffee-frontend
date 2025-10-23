@@ -6,11 +6,9 @@ export default function PannelloControllo() {
 	const navigate = useNavigate();
 
 	const buttons = [
-		{ label: "Prenotazioni", icon: "pi pi-users", color: "p-button-primary", action: () => navigate("/pannello/utenti") },
-		{ label: "Cibo", icon: "pi pi-calendar", color: "p-button-success", action: () => navigate("/pannello/prenotazioni") },
-		{ label: "Utenti", icon: "pi pi-chart-bar", color: "p-button-warning", action: () => navigate("/pannello/statistiche") },
-		{ label: "Impostazioni", icon: "pi pi-cog", color: "p-button-secondary", action: () => navigate("/pannello/impostazioni") },
-		{ label: "Menu", icon: "pi pi-list", color: "p-button-help", action: () => navigate("/pannello/menu") },
+		{ label: "Prenotazioni", icon: "pi pi-users", color: "p-button-primary", action: () => navigate("/pannello/prenotazioni") },
+		{ label: "Cibo", icon: "pi pi-calendar", color: "p-button-primary", action: () => navigate("/pannello/cibo") },
+		{ label: "Utenti", icon: "pi pi-chart-bar", color: "p-button-primary", action: () => navigate("/pannello/utenti") },
 	];
 
 	return (

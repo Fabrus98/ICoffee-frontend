@@ -51,7 +51,7 @@ export default function Home() {
                   onClick={goTo("/pannello")}
                   label="Pannello di Controllo"
                   icon="pi pi-cog"
-                  className="p-button-raised p-button-rounded p-button-lg p-button-secondary"
+                  className="p-button-raised p-button-rounded p-button-lg p-button-danger"
                   style={{ width: "100%", justifyContent: "flex-start", padding: "1rem 1.25rem" }}
                 />
               </div>
